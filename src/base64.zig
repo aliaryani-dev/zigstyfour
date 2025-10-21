@@ -21,10 +21,10 @@ pub const Base64 = struct {
         }
 
         const n_out = try _calc_encode_length(input);
-        var out = allocator.alloc(u8, n_out);
+        var out = try allocator.alloc(u8, n_out);
         var buf = [3]u8{0,0,0};
         var count:u8 = 0;
-        var iout:u64 = 0;
+        var iout:usize = 0;
         for (input, 0..) |_,i| {
             buf[count] = input[i];
             count += 1;
@@ -100,7 +100,7 @@ pub const Base64 = struct {
 };
 
 fn _calc_encode_length(input: []const u8) !usize {
-    if (input < 3) {
+    if (input.len < 3) {
         return 4;
     }
     const n_groups: usize = try std.math.divCeil(usize, input.len, 3);
