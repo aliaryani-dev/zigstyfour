@@ -9,4 +9,8 @@ const Base64 = struct {
             ._table = upper ++ lower ++ number_symbol,
         };
     }
+
+    pub fn _char_at(self: Base64, index: usize) u8 {
+        return self._table[index];
+    }
 };
