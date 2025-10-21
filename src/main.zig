@@ -9,7 +9,7 @@ pub fn main() !void {
     var fba = std.heap.FixedBufferAllocator.init(&memory_buffer);
     const allocator = fba.allocator();
     
-    const text = "Testing some stuff";
+    const text = "Testing some more stuff";
     const etext = "VGVzdGluZyBzb21lIG1vcmUgc3R1ZmY=";
     const base64 = b64.Base64.init();
 
@@ -18,5 +18,7 @@ pub fn main() !void {
     
     try stdout.print("Encoded Text: {s}\n", .{encoded_text});
     try stdout.print("Decoded Text: {s}\n", .{decoded_text});
+
+    try stdout.flush();
 
 }
