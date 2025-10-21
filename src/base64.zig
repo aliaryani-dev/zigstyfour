@@ -15,7 +15,7 @@ pub const Base64 = struct {
     fn _char_at(self: Base64, index: usize) u8 {
         return self._table[index];
     }
-    fn encode(self:Base64, allocator:std.mem.Allocator, input: []const u8) ![]u8 {
+    pub fn encode(self:Base64, allocator:std.mem.Allocator, input: []const u8) ![]u8 {
         if (input.len == 0) {
             return "";
         }
@@ -68,7 +68,7 @@ pub const Base64 = struct {
         return index;
     }
 
-    fn decode(self: Base64, allocator:std.mem.Allocator, input:[]const u8) ![]u8 {
+    pub fn decode(self: Base64, allocator:std.mem.Allocator, input:[]const u8) ![]u8 {
         if (input.len == 0) {
             return "";
         }
