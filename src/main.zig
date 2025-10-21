@@ -46,3 +46,9 @@ fn _calc_decode_length(input: []const u8) !usize {
 
     return multiple_groups;
 }
+
+pub fn main() !void {
+    const input = "Hi";
+    try stdout.print("{d}\n",.{input[0] >> 2});
+    try stdout.flush();
+}
